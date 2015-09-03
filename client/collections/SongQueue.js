@@ -26,7 +26,10 @@ var SongQueue = Songs.extend({
   //maybe add addSong method here
  
   playNext: function(){
-    this.at(0).play();
+    if(this.length !== 0){
+      this.at(0).play();
+    }
+    
   }
 
 });
