@@ -5,11 +5,12 @@ var SongQueue = Songs.extend({
     
     this.on('add',function(){
       if(this.length === 1){
+        console.log('called add');
         this.playFirst();
       }
-    },this)
+    },this);
     
-    this.on('remove', this.playNext,this)
+    this.on('remove', this.playNext,this);
   
   },
 
