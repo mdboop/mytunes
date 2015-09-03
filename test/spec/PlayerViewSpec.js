@@ -43,13 +43,13 @@ describe('PlayerView', function() {
       songQueue.add(thirdSong);
       // play the first song
       songQueue.playFirst();
-      expect(appView.playerView.model).to.equal(firstSong);
+      expect(appView.playerView.model.get('title')).to.equal(firstSong.get('title'));
       // Simulate the end of the first song
       $(appView.playerView.el).trigger('ended');
-      expect(appView.playerView.model).to.equal(secondSong);
+      expect(appView.playerView.model.get('title')).to.equal(secondSong.get('title'));
       // Simulate the end of the second song
       $(appView.playerView.el).trigger('ended');
-      expect(appView.playerView.model).to.equal(thirdSong);
+      expect(appView.playerView.model.get('title')).to.equal(thirdSong.get('title'));
     });
   });
 

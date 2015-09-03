@@ -9,7 +9,6 @@ var SongQueueEntryView = Backbone.View.extend({
     'click' : function() {
       //on click, remove from SongQueue Collection
       this.model.dequeue();
-
     }
   },
 
