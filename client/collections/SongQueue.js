@@ -10,20 +10,12 @@ var SongQueue = Songs.extend({
     },this);
     
     this.on('remove', this.playNext,this);
-    // this.on('remove', this.removeSong(song), this);
   
   },
 
   playFirst: function(){
     this.at(0).play();
   },
-
-  // removeSong: function(song) {
-  //   this.remove(song);
-  //   this.playNext();
-  // },
-
-  //maybe add addSong method here
  
   playNext: function(){
     if(this.length !== 0){

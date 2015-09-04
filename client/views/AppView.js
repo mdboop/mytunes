@@ -15,7 +15,6 @@ var AppView = Backbone.View.extend({
       this.playerView.setSong(model.get('currentSong'));
     }, this);
 
-    //use similar logic as above but listening for change:songQueue 
   },
 
   render: function() {

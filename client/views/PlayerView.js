@@ -3,21 +3,21 @@ var PlayerView = Backbone.View.extend({
 
   // HTML5 (native) audio tag is being used
   // see: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
-  el: '<audio controls autoplay />',
+  // el: '<audio controls autoplay />',
+  tagName: "div",
+
+  template: _.template('<div class="title"><%= title %></div> \
+                        <audio controls autoplay src=<%= url %>></audio>'),
 
   events: {
     'ended':'donePlaying'
   },  
 
   initialize: function() {
-    // this.('ended', function() {
-    //   console.log(this.model);
-    // }, this);
+    this.render();
   },
 
   donePlaying: function(){
-    //might need to move this into the model later
-    // this.model.dequeue();
     this.model.ended();
   },
 
@@ -27,7 +27,12 @@ var PlayerView = Backbone.View.extend({
   },
 
   render: function() {
-    return this.$el.attr('src', this.model ? this.model.get('url') : '');
+    if(this.model.get('title')) {
+      return this.$el.html(this.template(this.model.attributes));
+    } else {
+      return this.$el.html('<audio controls autoplay src=<%= url %>></audio>');
+    }
+    // return this.$el.attr('src', this.model ? this.model.get('url') : '');
   }
 
 });
