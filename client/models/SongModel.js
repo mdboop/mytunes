@@ -14,15 +14,13 @@ var SongModel = Backbone.Model.extend({
   },
 
   play: function() {
-    // Triggering an event here will also trigger the event on the collection
     this.trigger('play', this);
   },
 
   ended: function() {
     this.set('currentSong', null);
-    var count = this.get('playCount')
+    var count = this.get('playCount');
     this.set('playCount', count + 1);
-    this.dequeue();
     this.trigger('ended', this); 
   }
 

@@ -14,30 +14,18 @@ var AppModel = Backbone.Model.extend({
 
 
       //this was listening for 'dequeue', but changed to 'ended' for tests
-    params.library.on('ended',function(song){
-      var queue = this.get('currentQueue');
-      queue.remove(song);
-    }, this);
-
-    params.library.on('dequeue',function(song){
-      var queue = this.get('currentQueue');
-      queue.remove(song);
-    }, this);
-
-
     params.library.on('enqueue', function(song) {
-      var queue = this.get('currentQueue');
-      queue.add(song);
-      this.set('currentQueue',queue);
+      this.get('currentQueue').add(song);
     },this);
 
 
     params.library.on('play', function(song) {
-      console.log(song.get('title'));
       this.set('currentSong', song);
     }, this);
 
-
+    this.get('currentQueue').on('stop', function(){
+      this.set('currentSong', null);
+    });
   },
 
   addPlaylist: function(name) {
